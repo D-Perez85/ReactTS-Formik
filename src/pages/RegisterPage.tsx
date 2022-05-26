@@ -38,7 +38,7 @@ const onSubmit = (e: FormEvent<HTMLFormElement>) =>{
           <form onSubmit={  onSubmit }>
               <h5>Name and Email must contain more than 3 characters. 
                   <br/> Password must be different of "password"
-                  <br/>Password must must contain at least one "." 
+                  <br/>Password must contain at least one "." 
                   <br/> You must repeat the same password in both lockers
               </h5>
             <input
