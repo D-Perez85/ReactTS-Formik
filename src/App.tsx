@@ -1,10 +1,11 @@
-import React from 'react';
- 
+import { Navigation } from './routes/Navigation';
+
 function App() {
   return (
     <>
-      <h3>FORMIK PAGES</h3>
+      <Navigation />
     </>
   );
 }
+
 export default App;
