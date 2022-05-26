@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
 import logo from '../logo.svg';
+import { RegisterPage } from "../pages/RegisterPage";
 
 export const Navigation = () => {
   return (
@@ -12,7 +13,7 @@ export const Navigation = () => {
               <NavLink to="/" activeClassName="nav-active" exact>Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeClassName="nav-active" exact>About</NavLink>
+              <NavLink to="/register" activeClassName="nav-active" exact>Register Page</NavLink>
             </li>
             <li>
               <NavLink to="/users" activeClassName="nav-active" exact>Users</NavLink>
@@ -22,8 +23,8 @@ export const Navigation = () => {
         </nav>
 
         <Switch>
-          <Route path="/about">
-            <h2>ABOUT</h2>
+        <Route path="/register">
+            <RegisterPage/>
           </Route>
           <Route path="/users">
             <h2>USERS</h2>
