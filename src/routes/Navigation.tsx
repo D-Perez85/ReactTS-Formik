@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
 import logo from '../logo.svg';
+import {FormikBasicPage} from "../pages/FormikBasicPage";
 import { RegisterPage } from "../pages/RegisterPage";
 import { RegisterPageII } from "../pages/RegisterPageII";
-
 export const Navigation = () => {
   return (
     <Router>
@@ -16,6 +16,9 @@ export const Navigation = () => {
             <li>
               <NavLink to="/register2" activeClassName="nav-active" exact>Register Page II</NavLink>
             </li>
+            <li>
+              <NavLink to="/formik-basic" activeClassName="nav-active" exact>Formik Basic Page</NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -23,9 +26,12 @@ export const Navigation = () => {
         <Route path="/register">
             <RegisterPage/>
           </Route>
-          <Route>
+          <Route path="/register2">
             <RegisterPageII/>
-          </Route>          
+          </Route>    
+          <Route path="/formik-basic">
+          <FormikBasicPage/>
+          </Route>        
         </Switch>
       </div>
     </Router>

@@ -2,6 +2,7 @@ import { FormEvent, useState, useEffect } from "react";
 import "../styles/styles.css";
 import useForm from '../hooks/useForm';
 import Swal from 'sweetalert2'
+import { Modal } from "../hooks/useSwal";
 
 export const RegisterPageII = () => {
 const [button, setButton] = useState(true); 
@@ -15,13 +16,7 @@ const {onChange, name, email, password1, password2, resetForm, isValidEmail } = 
 
 const onSubmit = (e: FormEvent<HTMLFormElement>) =>{
     e.preventDefault(); 
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Succesful Login',
-        showConfirmButton: false,
-        timer: 1500
-    })
+    Modal(); 
     resetForm(); 
 }
 useEffect(() => {
