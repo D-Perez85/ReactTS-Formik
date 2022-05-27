@@ -54,4 +54,3 @@ export const FormikYupPage = () => {
     </div>
   );
 };
-export default FormikYupPage;
