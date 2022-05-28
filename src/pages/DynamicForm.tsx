@@ -1,7 +1,8 @@
 import { Formik, Form } from 'formik';
-import { MyTextInput } from '../components';
+import { MyTextInput, MySelect, MyCheckbox } from '../components';
 import formJson from '../data/custon-form.json';
 import * as Yup from "yup";
+import { Modal } from '../hooks/useSwal';
 
 const initialValues: { [key: string]: any } = {};
 const requiredFields: { [key: string]: any } = {};
@@ -19,7 +20,7 @@ for (const input of formJson) {
     if (rule.type === "required") {
       schema = schema.required("Required field");
     }
-    /* if the object doesn't contains the values (Json), the setting of params (minLength) by default is done here  */
+  /* if the object doesn't contains the values (Json), the setting of params (minLength) by default is done here  */
     if (rule.type === "minLength") {
       schema = schema.min(
         (rule as any).value || 2,
@@ -33,7 +34,7 @@ for (const input of formJson) {
         `Max of characters must be ${(rule as any).value || 12}`
       );
     }
-    /* validation case format Email  */
+    /* validation case Email format */
     if (rule.type === "email") {
       schema = schema.email(`Invalid format`);
     }
@@ -43,7 +44,6 @@ for (const input of formJson) {
 
 /** validationSchema contains an object of type Yup, who define all the type of dynamic validations  
     That kinds of validations are used like props  */
-
 const validationSchema = Yup.object({ ...requiredFields });
 
 export const DynamicForm = () => {
@@ -53,23 +53,43 @@ export const DynamicForm = () => {
         <Formik         
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values)=>{}}>
-              
-            {(formik)=>(
-                <Form noValidate>
-                    { formJson.map( ({ type, name, placeholder, label }) => {
-                        return (
-                            <MyTextInput 
-                                key={name}
-                                name={name} 
-                                type={(type as any)} 
-                                label={label} 
-                                placeholder={placeholder}/>
-                        )
-                    })}
-                         <button type='submit'> SUBMIT </button>
-                </Form>
-            )}
+                onSubmit={(values, {resetForm})=>{
+                  Modal();
+                  resetForm();  
+                }}>   
+      {(formik) => (
+      /* Add of conditional rendering based in JSON document - The page will render only the values provides in that doc
+         If one format is not admitted by validationSchema, the render will be return an error by console   */ 
+          <Form noValidate>
+            {formJson.map(({ type, name, placeholder, label, options }) => {
+              if (type === "input" || type === "password" || type === "email") {
+                return (
+                  <MyTextInput
+                    key={name}
+                    type={type as any}
+                    name={name}
+                    label={label}
+                    placeholder={placeholder}/>
+                  );
+                } else if (type === "select") {
+                  return (
+                    <MySelect key={name} label={label} name={name}>
+                    <option value="">Select an option</option>
+                    {options?.map(({ id, label }) => (
+                      <option key={id} value={id}>
+                        {label}
+                      </option>
+                    ))}
+                  </MySelect>
+                );
+              } else if (type === "checkbox") {
+                return <MyCheckbox key={name} label={label} name={name}/>;
+              }
+              throw new Error(`Type: ${type}, its not supported`);
+            })}
+            <button type="submit">Submit</button>
+          </Form>
+        )}
         </Formik>
     </div>
   )

@@ -42,7 +42,7 @@ export const FormikAbstraction = () => {
                 <option value="it-senior">IT Senior</option>
                 <option value="it-jr">IT Jr.</option>
             </MySelect>
-            <MyCheckbox label="Termns & Conditions" name="terms" />
+            <MyCheckbox label="Terms & Conditions" name="terms" />
             <button type="submit">Submit</button>
           </Form>
         )}

@@ -53,5 +53,42 @@
               "type": "email"
           }
       ]
-  }
-]
+    },
+    {
+        "type": "select",
+        "name": "favoriteMovie",
+        "label": "Select a Movie",
+        "value": "",
+        "options": [{
+            "id": 1,
+            "label": "SuperMan"
+        },
+        {
+            "id": 2,
+            "label": "MetalSlahs II"
+        },
+        {
+            "id": 3,
+            "label": "Monzon"
+        }],
+        "validations": [
+            {
+                "type": "required"
+            }
+        ]
+    },
+  {
+      "type": "checkbox",
+      "name": "checkbox",
+       "label": "Terms & Conditions",
+      "value": "",
+      "validations": [
+          {
+              "type": "required"
+          },
+          {
+              "type": "checkbox"
+          }
+      ]
+    }
+  ]
