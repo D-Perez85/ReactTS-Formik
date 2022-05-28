@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2'
 
-
 export const Modal = () =>{
     Swal.fire({
         position: 'center',

@@ -1,8 +1,6 @@
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
-import "../styles/styles.css";
-import Swal from 'sweetalert2'
 import { Modal } from "../hooks/useSwal";
-
+import "../styles/styles.css";
 
 export const RegisterPage = () => {
   const [button, setButton] = useState(true); 
@@ -18,15 +16,15 @@ const onSubmit = (e: FormEvent<HTMLFormElement>) =>{
     Modal(); 
 }
 
-    useEffect(() => {
-            if (name.length > 3 && email.length > 3 
-                && password1 !== "password" && password1.includes(".")
-                && password2 === password1)
-            {setButton(false);
-                } else {
-            setButton(true);
-                }
-            }, [name, email, password1, password2]);
+  useEffect(() => {
+          if (name.length > 3 && email.length > 3 
+              && password1 !== "password" && password1.includes(".")
+              && password2 === password1)
+          {setButton(false);
+              } else {
+          setButton(true);
+              }
+          }, [name, email, password1, password2]);
     return (
         <div>
           <h1>Register Page</h1>
@@ -36,30 +34,10 @@ const onSubmit = (e: FormEvent<HTMLFormElement>) =>{
                   <br/>Password must contain at least one "." 
                   <br/> You must repeat the same password in both lockers
               </h5>
-            <input
-              type="text"
-              name='name'
-              placeholder="Name"
-              value={name}
-              onChange={(ev)=>onChange(ev)}/>
-           <input
-              type="email"
-              name='email'
-              placeholder="Email"
-              value={email}
-              onChange={onChange}/>
-            <input
-              type="password"
-              name='password1'
-              placeholder="Password"
-              value={password1}
-              onChange={onChange}/>
-            <input
-              type="password"
-              name='password2'
-              placeholder="Repeat Password"
-              value={password2}
-              onChange={onChange}/>
+            <input type="text" name='name' placeholder="Name" value={name} onChange={(ev)=>onChange(ev)}/>
+            <input type="email" name='email' placeholder="Email" value={email} onChange={onChange}/> 
+            <input type="password" name='password1' placeholder="Password" value={password1} onChange={onChange}/>
+            <input type="password" name='password2' placeholder="Repeat Password" value={password2} onChange={onChange}/>
             <button type="submit" disabled={button} className={button ? "" : "validate"}>SUBMIT</button>
           </form>
         </div>

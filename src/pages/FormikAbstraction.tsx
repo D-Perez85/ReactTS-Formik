@@ -4,7 +4,7 @@ import { MyCheckbox, MyTextInput, MySelect } from '../components/index'
 import { Modal } from "../hooks/useSwal";
 import "../styles/styles.css";
 
-/**  Este Formik importa los components, a los cuales se les pasan Props (ej <MytextInput/>) **/
+/* Formik receives all components by imports (ej <MytextInput/>) and assign them custom Props for their config  **/
 export const FormikAbstraction = () => {
   return (
     <div>
@@ -37,7 +37,7 @@ export const FormikAbstraction = () => {
             <MyTextInput label="Email Address" name="email" placeholder="user@google.com" type="email"/>
             <MySelect label="Job Type" name="jobType">
                 <option value="">Pick something</option>
-                <option value="developer">Develper</option>
+                <option value="developer">Developer</option>
                 <option value="designer">Designer</option>
                 <option value="it-senior">IT Senior</option>
                 <option value="it-jr">IT Jr.</option>

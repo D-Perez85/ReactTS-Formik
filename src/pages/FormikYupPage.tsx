@@ -4,9 +4,7 @@ import "../styles/styles.css";
 import {Modal} from "../hooks/useSwal";
 
 export const FormikYupPage = () => {
-  /**  getFieldProps permite un componente mas limpio de Props - 
-       ej onChange, onBlur y value vienen de Formik ahora  
-  */ 
+/*  getFieldProps allows a clean props component - ej onChange, onBlur and value now come from Formik */ 
   const { handleSubmit, errors, touched, resetForm, getFieldProps } = useFormik({
     initialValues: {
       firstName: "",
@@ -14,11 +12,10 @@ export const FormikYupPage = () => {
       email: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       Modal(); 
-      resetForm(); 
-    },
-    //La validacion se hace ahora con un Schema de Yup - 
+      resetForm()}, 
+
+    /* The validation is done with a Yup Schema  */
     validationSchema: Yup.object({
       firstName: Yup.string()
         .max(15, "Max of characters must be 15")
@@ -37,9 +34,7 @@ export const FormikYupPage = () => {
       <form onSubmit={handleSubmit} noValidate>
         <label htmlFor="firstName">First Name</label>
         <input type="text" {...getFieldProps("firstName")} />
-        {touched.firstName && errors.firstName && (
-          <span>{errors.firstName}</span>
-        )}
+        {touched.firstName && errors.firstName && ( <span>{errors.firstName}</span> )}
 
         <label htmlFor="lastName">Last Name</label>
         <input type="text" {...getFieldProps("lastName")} />
