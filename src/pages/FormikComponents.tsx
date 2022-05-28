@@ -21,21 +21,20 @@ export const FormikComponents = () => {
           }}
         validationSchema={Yup.object({
           firstName: Yup.string()
-            .max(15, "Debe de tener 15 caracteres o menos")
-            .required("Requerido"),
+            .max(15, "Max of characters must be 15")
+            .required("Required field"),
           lastName: Yup.string()
-            .max(15, "Debe de tener 15 caracteres o menos")
-            .required("Requerido"),
+            .max(15, "Max of characters must be 15")
+            .required("Required field"),
           email: Yup.string()
-            .email("El correo no tiene un formato válido")
-            .required("Requerido"),
-          terms: Yup.boolean().oneOf([true], "Debe de aceptar las condiciones"),
+            .email("Invalid email address")
+            .required("Required field"),
+          terms: Yup.boolean().oneOf([true], "You Must accept the conditions"),
           jobType: Yup.string()
-          .notOneOf(["it-jr"], "Esta opción no es permitida.")
-            .required("Requerido"),
-        })}
-      >
-        {() => ( 
+              .notOneOf(["it-jr"], "Invalid option.")
+              .required("Required field"),
+        })}>
+        {(formik) => ( 
           <Form>
             <label htmlFor="firstName">First Name</label>
             <Field name="firstName" type="text" />
