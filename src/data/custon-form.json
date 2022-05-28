@@ -11,7 +11,7 @@
           },
           {
               "type": "minLength",
-              "value": 5
+              "value": 4
           },
           {
             "type": "maxLength",
@@ -31,11 +31,11 @@
           },
           {
             "type": "minLength",
-            "value": 5
+            "value": 4
         },
         {
           "type": "maxLength",
-          "value": 12
+          "value": 15
         }
       ]
   },
